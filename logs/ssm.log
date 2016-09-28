@@ -1,0 +1,91 @@
+[INFO][main][2016-09-28 12:07:11][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-09-28 12:07:12][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Wed Sep 28 12:07:12 CST 2016]; root of context hierarchy
+[INFO][main][2016-09-28 12:07:12][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN][main][2016-09-28 12:07:12][org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.heitian.ssm.dao]' package. Please check your configuration.
+[INFO][main][2016-09-28 12:07:12][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-09-28 12:07:12][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:12][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 633 ms
+[INFO][main][2016-09-28 12:07:12][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-09-28 12:07:12][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Wed Sep 28 12:07:12 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-09-28 12:07:12][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-09-28 12:07:12][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:13][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 553 ms
+[INFO][main][2016-09-28 12:07:14][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-09-28 12:07:15][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Wed Sep 28 12:07:15 CST 2016]; root of context hierarchy
+[INFO][main][2016-09-28 12:07:15][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN][main][2016-09-28 12:07:15][org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.heitian.ssm.dao]' package. Please check your configuration.
+[INFO][main][2016-09-28 12:07:15][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-09-28 12:07:15][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 524 ms
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-09-28 12:07:15][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Wed Sep 28 12:07:15 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-09-28 12:07:15][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-09-28 12:07:15][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:15][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 418 ms
+[INFO][main][2016-09-28 12:07:57][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-09-28 12:07:57][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Wed Sep 28 12:07:57 CST 2016]; root of context hierarchy
+[INFO][main][2016-09-28 12:07:57][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN][main][2016-09-28 12:07:58][org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.heitian.ssm.dao]' package. Please check your configuration.
+[INFO][main][2016-09-28 12:07:58][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-09-28 12:07:58][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 462 ms
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-09-28 12:07:58][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Wed Sep 28 12:07:58 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-09-28 12:07:58][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-09-28 12:07:58][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:07:58][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 337 ms
+[INFO][main][2016-09-28 12:08:29][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-09-28 12:08:29][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Wed Sep 28 12:08:29 CST 2016]; root of context hierarchy
+[INFO][main][2016-09-28 12:08:29][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN][main][2016-09-28 12:08:29][org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.heitian.ssm.dao]' package. Please check your configuration.
+[INFO][main][2016-09-28 12:08:29][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-09-28 12:08:29][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:08:29][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 433 ms
+[INFO][main][2016-09-28 12:08:29][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-09-28 12:08:29][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Wed Sep 28 12:08:29 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-09-28 12:08:29][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-09-28 12:08:29][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:08:30][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 291 ms
+[WARN][qtp745627268-18][2016-09-28 12:08:39][org.springframework.web.servlet.DispatcherServlet] - No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'SpringMVC'
+[INFO][main][2016-09-28 12:10:46][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-09-28 12:10:46][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Wed Sep 28 12:10:46 CST 2016]; root of context hierarchy
+[INFO][main][2016-09-28 12:10:47][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[WARN][main][2016-09-28 12:10:47][org.mybatis.spring.mapper.ClassPathMapperScanner] - No MyBatis mapper was found in '[com.heitian.ssm.dao]' package. Please check your configuration.
+[INFO][main][2016-09-28 12:10:47][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-09-28 12:10:47][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 495 ms
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-09-28 12:10:47][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Wed Sep 28 12:10:47 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-09-28 12:10:47][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-09-28 12:10:47][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-09-28 12:10:47][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 322 ms
