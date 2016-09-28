@@ -3,10 +3,12 @@ package com.xyzc.gemini.controller;
 import com.thoughtworks.xstream.XStream;
 import com.xyzc.gemini.wechat.manager.SHA1;
 import com.xyzc.gemini.wechat.manager.SerializeXmlUtil;
-import com.xyzc.gemini.wechat.model.ImageMessage;
-import com.xyzc.gemini.wechat.model.InputMessage;
-import com.xyzc.gemini.wechat.model.MsgType;
-import com.xyzc.gemini.wechat.model.OutputMessage;
+import com.xyzc.gemini.wechat.model.local.WechatMedia;
+import com.xyzc.gemini.wechat.model.message.ImageMessage;
+import com.xyzc.gemini.wechat.model.message.InputMessage;
+import com.xyzc.gemini.wechat.model.message.MsgType;
+import com.xyzc.gemini.wechat.model.message.OutputMessage;
+import com.xyzc.gemini.wechat.service.WechatService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +31,8 @@ import java.util.*;
 public class WechatController {
     private static Logger logger = Logger.getLogger(WechatController.class);
     private String Token = "123456789gemini";
+    @Resource
+    WechatService wechatService;
 
     @RequestMapping(value = "wechat", method = { RequestMethod.GET, RequestMethod.POST })
     @ResponseBody
@@ -152,18 +157,33 @@ public class WechatController {
             System.out.println("图片链接：" + inputMsg.getPicUrl());
             System.out.println("消息id，64位整型：" + inputMsg.getMsgId());
 
+            //insert into database
+            wechatService.insertMedia(inputMsg.getMediaId(), inputMsg.getPicUrl());
             OutputMessage outputMsg = new OutputMessage();
+            WechatMedia wechatMedia = wechatService.selectRadomMedia(inputMsg.getMediaId());
+
             outputMsg.setFromUserName(servername);
             outputMsg.setToUserName(custermname);
             outputMsg.setCreateTime(returnTime);
             outputMsg.setMsgType(msgType);
             ImageMessage images = new ImageMessage();
-            images.setMediaId(inputMsg.getMediaId());
+            //images.setMediaId(inputMsg.getMediaId());
+            images.setMediaId(wechatMedia.getMediaId());
             outputMsg.setImage(images);
             System.out.println("xml转换：/n" + xs.toXML(outputMsg));
             response.getWriter().write(xs.toXML(outputMsg));
 
         }
+    }
+
+    @RequestMapping(value = "test")
+    @ResponseBody
+    public void test(HttpServletRequest request, HttpServletResponse response) {
+        WechatMedia wechatMedia = new WechatMedia();
+        wechatMedia.setMediaId("BM1434HHNPIO89");
+        wechatMedia.setMediaUrl("http://115.29.144.199/proj/imgs/dog.ico");
+        wechatService.insertMedia(wechatMedia.getMediaId(), wechatMedia.getMediaUrl());
+        System.out.println(wechatService.selectRadomMedia(wechatMedia.getMediaId()).getMediaId());
     }
 
 }

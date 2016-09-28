@@ -1,6 +1,8 @@
-package com.xyzc.gemini.wechat.model;
+package com.xyzc.gemini.wechat.model.message;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.xyzc.gemini.wechat.model.XStreamCDATA;
+import com.xyzc.gemini.wechat.model.message.ImageMessage;
 
 /**
  * Created by xyzc on 2016/9/28.

@@ -1,4 +1,4 @@
-package com.xyzc.gemini.wechat.model;
+package com.xyzc.gemini.wechat.model.message;
 
 
 import java.io.Serializable;

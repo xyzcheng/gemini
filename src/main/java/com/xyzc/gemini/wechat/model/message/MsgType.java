@@ -1,4 +1,4 @@
-package com.xyzc.gemini.wechat.model;
+package com.xyzc.gemini.wechat.model.message;
 
 /**
  * Created by xyzc on 2016/9/28.
