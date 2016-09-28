@@ -208,6 +208,11 @@
       <artifactId>commons-codec</artifactId>
       <version>1.9</version>
     </dependency>
+    <dependency>
+      <groupId>com.thoughtworks.xstream</groupId>
+      <artifactId>xstream</artifactId>
+      <version>1.4.3</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>Gemini</finalName>
@@ -222,7 +227,7 @@
           <scanIntervalSeconds>0</scanIntervalSeconds>
           <connectors>
             <connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-              <port>8080</port>
+              <port>80</port>
               <maxIdleTime>60000</maxIdleTime>
             </connector>
           </connectors>
