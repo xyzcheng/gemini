@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xyzc.gemini.wechat.mapper.WechatMediaDescMapper">
+
+    <insert id="insert" parameterType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        INSERT INTO gemini_wechat_media_desc(id, openId, time, location, story, mediaId, exchangeId)
+        VALUES (#{id, jdbcType=INTEGER}, #{openId, jdbcType=VARCHAR}, '', ''
+        , '', #{mediaId, jdbcType=VARCHAR}, 0);
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        DELETE FROM gemini_wechat_media_desc WHERE id = #{id, jdbcType=INTEGER};
+    </delete>
+
+    <update id="updateById" parameterType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        UPDATE gemini_wechat_media_desc
+        <set>
+            <if test="id != null">
+                id = #{id, jdbcType=INTEGER},
+            </if>
+            <if test="openId != null">
+                openId = #{openId, jdbcType=VARCHAR},
+            </if>
+            <if test="time != null">
+                time = #{time, jdbcType=VARCHAR},
+            </if>
+            <if test="location != null">
+                location = #{location, jdbcType=VARCHAR},
+            </if>
+            <if test="story != null">
+                story = #{story, jdbcType=VARCHAR},
+            </if>
+            <if test="mediaId != null">
+                mediaId = #{mediaId, jdbcType=VARCHAR},
+            </if>
+            <if test="exchangeId != null">
+                exchangeId = #{exchangeId, jdbcType=INTEGER},
+            </if>
+        </set>
+        WHERE id = #{id, jdbcType=INTEGER};
+    </update>
+
+    <select id="findByOpenId" parameterType="java.lang.String"
+            resultType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        SELECT * FROM gemini_wechat_media_desc
+        WHERE  openId = #{openId, jdbcType=VARCHAR};
+    </select>
+
+    <select id="findSelfMediaDesc" parameterType="java.lang.String"
+            resultType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        SELECT * FROM gemini_wechat_media_desc
+        WHERE openId = #{openId, jdbcType=VARCHAR};
+    </select>
+
+    <select id="findAll" resultType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        SELECT  * FROM gemini_wechat_media_desc;
+    </select>
+
+</mapper>

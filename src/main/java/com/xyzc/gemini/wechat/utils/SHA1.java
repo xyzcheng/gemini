@@ -1,4 +1,4 @@
-package com.xyzc.gemini.wechat.manager;
+package com.xyzc.gemini.wechat.utils;
 
 import java.security.MessageDigest;
 

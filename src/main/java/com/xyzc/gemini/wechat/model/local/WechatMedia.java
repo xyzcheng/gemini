@@ -7,6 +7,7 @@ public class WechatMedia {
     private int id;
     private String mediaId;
     private String mediaUrl;
+    private String mediaType;
 
     public int getId() {
         return id;
@@ -20,6 +21,10 @@ public class WechatMedia {
         return mediaUrl;
     }
 
+    public String getMediaType() {
+        return mediaType;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
@@ -30,5 +35,9 @@ public class WechatMedia {
 
     public void setMediaUrl(String mediaUrl) {
         this.mediaUrl = mediaUrl;
+    }
+
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 }

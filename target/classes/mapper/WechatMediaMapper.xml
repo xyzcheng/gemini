@@ -3,61 +3,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xyzc.gemini.wechat.mapper.WechatMediaMapper">
-<!--
-    <insert id="createUser" parameterType="User">
-        <![CDATA[ insert into
-  user_info (user_id, user_name, user_password,
-  user_email,user_role) values (#{userId},#{userName}
-  ,#{userPassword},#{userEmail},#{userRole})]]>
-        &lt;!&ndash; 这里sql结尾不能加分号，否则报"ORA-00911"的错误 &ndash;&gt;
-    </insert>
-    &lt;!&ndash; 这里的id必须和UserMapper接口中的接口方法名相同，不然运行的时候也要报错 &ndash;&gt;
-    <delete id="deleteUser" parameterType="java.lang.String">
-        <![CDATA[ delete from user_info where id = #{id} ]]>
-    </delete>
-
-    <update id="updateUsers" parameterType="User">
-        <![CDATA[update user_info set
-  user_name = #{userName},
-  user_password = #{userPassword},
-  user_email = #{userEmail},
-  user_role = #{userRole}
-  where user_id = #{userId} ]]>
-    </update>
-
-    <select id="selectAllUsers" resultType="User">
-        <![CDATA[select * from user_info ]]>
-    </select>
-
-    <select id="selectUserById" resultType="User" parameterType="java.lang.String">
-        <![CDATA[select * from user_info where user_id = #{userId}]]>
-    </select>
-
-    <select id="selectUsers" resultType="User" parameterType="User">
-        <![CDATA[select * from user_info ]]>
-        <where>
-            <if test="userName!=null">
-                <![CDATA[And user_name like '%'||#{userName}||'%']]>
-            </if>
-            <if test="userRole!=null">
-                <![CDATA[And user_role like '%'||#{userRole}||'%']]>
-            </if>
-        </where>
-    </select>
-
-    <select id="selectUsersCount" resultType="int">
-        <![CDATA[select count(*) from user_info ]]>
-    </select>
-
-    <select id="selectUserByName" resultType="User" parameterType="java.lang.String">
-        <![CDATA[select * from user_info where user_name = #{userName}]]>
-    </select>-->
     <select id="findAll" resultType="com.xyzc.gemini.wechat.model.local.WechatMedia">
         SELECT * FROM gemini_wechat_media;
     </select>
 
     <insert id="insert" parameterType="com.xyzc.gemini.wechat.model.local.WechatMedia">
-        INSERT INTO gemini_wechat_media(id, mediaId, mediaUrl) VALUES (#{id}, #{mediaId}, #{mediaUrl});
+        INSERT INTO gemini_wechat_media(id, mediaId, mediaUrl, mediaType)
+        VALUES (#{id, jdbcType=INTEGER}, #{mediaId, jdbcType=VARCHAR}
+        , #{mediaUrl, jdbcType=VARCHAR}, #{mediaType, jdbcType=VARCHAR});
     </insert>
 
 </mapper>
