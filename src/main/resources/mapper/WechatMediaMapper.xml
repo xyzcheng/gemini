@@ -7,6 +7,13 @@
         SELECT * FROM gemini_wechat_media;
     </select>
 
+    <select id="findByMediaId" parameterType="java.lang.String"
+            resultType="com.xyzc.gemini.wechat.model.local.WechatMedia">
+        SELECT * FROM gemini_wechat_media
+        WHERE mediaId = #{mediaId, jdbcType=VARCHAR}
+        LIMIT 1;
+    </select>
+
     <insert id="insert" parameterType="com.xyzc.gemini.wechat.model.local.WechatMedia">
         INSERT INTO gemini_wechat_media(id, mediaId, mediaUrl, mediaType)
         VALUES (#{id, jdbcType=INTEGER}, #{mediaId, jdbcType=VARCHAR}

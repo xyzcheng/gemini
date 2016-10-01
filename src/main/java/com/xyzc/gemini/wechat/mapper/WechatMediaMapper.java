@@ -12,4 +12,5 @@ import java.util.List;
 public interface WechatMediaMapper {
     void insert(WechatMedia wechatMedia);
     List<WechatMedia> findAll();
+    WechatMedia findByMediaId(String mediaId);
 }

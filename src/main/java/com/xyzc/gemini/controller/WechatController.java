@@ -1,7 +1,9 @@
 package com.xyzc.gemini.controller;
 
 import com.thoughtworks.xstream.XStream;
+import com.xyzc.gemini.wechat.model.local.WechatAllMediaDescResult;
 import com.xyzc.gemini.wechat.model.local.WechatMediaDesc;
+import com.xyzc.gemini.wechat.model.local.WechatMediaDescManage;
 import com.xyzc.gemini.wechat.utils.ErrorCode;
 import com.xyzc.gemini.wechat.utils.SHA1;
 import com.xyzc.gemini.wechat.utils.SerializeXmlUtil;
@@ -11,12 +13,15 @@ import com.xyzc.gemini.wechat.model.message.InputMessage;
 import com.xyzc.gemini.wechat.model.message.MsgType;
 import com.xyzc.gemini.wechat.model.message.OutputMessage;
 import com.xyzc.gemini.wechat.service.WechatService;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -35,22 +40,23 @@ public class WechatController {
     private static Logger logger = Logger.getLogger(WechatController.class);
     private String Token = "123456789gemini";
     private static final String GUIDE_EXCHANGE_PIC = "欢迎参加WeBoth举办的十一“图片交换”活动，活动需要通过以下方式进行：\n" +
-            "  1.发送一张您认为有意义的图片\n" +
-            "  2.发送图片的描述信息：时间，地点和故事，中间以“空格”隔开，如：\n" +
-            "    2016/10/01/19:33 辽宁大连 牛角山眺望美丽的星海\n" +
-            "  如格式正确，则您会收到交换后的图片和信息，若不正确，请按提示信息进行操作。\n" +
-            "  注：每发送一张图片，则必须为此图片添加正确的描述信息，获得交换图片后才能进行下一轮的图片交换" +
-            "  祝大家玩的开心 o(*￣▽￣*)ブ";
+            "  1.发送一张您认为有趣的旅行的图片\n" +
+            "  2.发送图片的描述信息：时间，地点和故事，中间以“#”隔开，如：\n" +
+            "2016/10/01/05:33#山东泰山#还有一点点到顶，身边络绎不绝的脚步声。那么多未知，我不能慌\n" +
+            "如格式正确，则您会立即收到交换后的图片和信息，若不正确，请按提示信息进行操作。\n" +
+            "  注：每发送一张图片，则必须为此图片添加正确的描述信息，获得交换图片后才能进行下一轮的图片交换！" +
+            "祝大家玩的开心 o(*￣▽￣*)ブ";
     private static final String GUIDE_ERROR_FORM = "消息已收到！WeBoth正在开展“图片交换”活动" +
             "，如果您未参加此活动，您可以回复“图片交换”参加或者忽略以下信息：\n\n" +
-            "您输入的描述信息格式有误，请重新发送图片的描述信息：时间，地点和故事，中间以“空格”隔开，如：\n" +
-            "    2016/10/01/19:33 辽宁大连 牛角山眺望美丽的星海\n";
+            "您输入的描述信息格式有误，请重新发送图片的描述信息：时间，地点和故事，中间以“#”隔开，如：\n" +
+            "2016/10/01/05:33#山东泰山#还有一点点到顶，身边络绎不绝的脚步声。那么多未知，我不能慌\n" +
+            "  注：有任何疑问请联系后台小编Jwx506142129";
 
     private static final String GUIDE_PIC_NEED_DESCRIPTION = "您上次发送的图片还未添加描述信息" +
-            "，您可以发送 “删除未完成图片” 给我们对未添加描述信息的图片进行删除，\n"+
-            "，或者重新发送图片的描述信息：时间，地点和故事，中间以“空格”隔开，如：\n" +
-            "    2016/10/01/19:33 辽宁大连 牛角山眺望美丽的星海\n\n" +
-            "发送 “显示未完成图片” 可以回传您未完成的图片";
+            "，您可以重新发送图片的描述信息：时间，地点和故事，中间以“#”隔开，如：\n" +
+            "2016/10/01/05:33#山东泰山#还有一点点到顶，身边络绎不绝的脚步声。那么多未知，我不能慌\n\n" +
+            "或者发送 “删除未完成图片”对未添加描述信息的图片进行删除，\n"+
+            "也可以发送 “显示未完成图片” 查看您未添加描述的图片";
 
     @Resource
     WechatService wechatService;
@@ -139,7 +145,7 @@ public class WechatController {
             dumpInputText(inputMsg);
             String content = inputMsg.getContent();
             if (StringUtils.isEmpty(content)) {
-                outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                outXml = createTextXmlStr(custerName, serverName, "发生了未知错误-10001");
             } else if (content.equals("图片交换")) {
                 outXml = createTextXmlStr(custerName, serverName, GUIDE_EXCHANGE_PIC);
             } else if (content.equals("显示未完成图片")) {
@@ -161,13 +167,13 @@ public class WechatController {
                     outXml = createTextXmlStr(custerName, serverName, "不存在未完成图片");
                     System.out.println("outXml: " + outXml);
                 } else {
-                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误-10002");
                     System.out.println("outXml: " + outXml);
                 }
             } else if (content.equals("看图片")) {
                 WechatMediaDesc mediaDesc = wechatService.findUnSelfRadomMedia(custerName);
                 if (mediaDesc == null) {
-                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                    outXml = createTextXmlStr(custerName, serverName, "您上一次交换到的图片有可能已经被删除，请重新交换图片哦~");
                 } else {
                     outXml = xs.toXML(createImageMsg(custerName, serverName, mediaDesc.getMediaId()));
                     System.out.println("xml转换：/n" +outXml);
@@ -175,15 +181,13 @@ public class WechatController {
             } else if (content.equals("看故事")) {
                 WechatMediaDesc mediaDesc = wechatService.findUnSelfRadomMedia(custerName);
                 if (mediaDesc == null) {
-                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                    outXml = createTextXmlStr(custerName, serverName, "您上一次交换到的图片有可能已经被删除，请重新交换图片哦~");
                 } else {
                     outXml = createTextXmlStr(custerName, serverName
                             , "时间：" + mediaDesc.getTime()
                                     + "\n" + "地点：" + mediaDesc.getLocation()
-                                    + "\n" + "小故事："
                                     + "\n" + "    " + mediaDesc.getStory()
-                                    + "\n\n" + "回复 “看图片” 显示图片"
-                                    + "\n" + "回复 “看故事” 重新看小故事");
+                                    + "\n\n" + "回复 “看图片” 显示图片");
                 }
             } else {
                 outXml = addMediaDescription(custerName, serverName, content, xs);
@@ -197,11 +201,11 @@ public class WechatController {
                 } else if (err == ErrorCode.ERROR_HAS_UNFINISHED_PIC) {
                     outXml = createTextXmlStr(custerName, serverName, GUIDE_PIC_NEED_DESCRIPTION);
                 } else {
-                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                    outXml = createTextXmlStr(custerName, serverName, "发生了未知错误-10003");
                 }
             } catch (Exception e) {
                 logger.error("[wechat] add picture happens: ", e);
-                outXml = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                outXml = createTextXmlStr(custerName, serverName, "发生了未知错误-10004");
             }
         } else {
             outXml = createTextXmlStr(custerName, serverName, "WeBoth图片交换活动期间，只接收文字和图片信息，你可以发送“图片交换”获取详细信息");
@@ -212,11 +216,14 @@ public class WechatController {
 
     private String addMediaDescription(String custerName, String serverName, String content, XStream xs) {
         if (StringUtils.isEmpty(content)) {
-            return createTextXmlStr(custerName, serverName, "发生了未知错误");
+            return createTextXmlStr(custerName, serverName, "发生了未知错误-10005");
         }
-        List<String> desc = Arrays.asList(content.split(" "));
+        List<String> desc = Arrays.asList(content.split("#"));
         if (desc == null || desc.size() != 3) {
-            return createTextXmlStr(custerName, serverName, GUIDE_ERROR_FORM);
+            desc = Arrays.asList(content.split("＃"));
+            if (desc == null || desc.size() != 3) {
+                return createTextXmlStr(custerName, serverName, GUIDE_ERROR_FORM);
+            }
         }
         WechatMediaDesc mediaDesc = new WechatMediaDesc();
         mediaDesc.setOpenId(custerName);
@@ -229,24 +236,22 @@ public class WechatController {
             if (err == ErrorCode.ERROR_SUCCESS) {
                 WechatMediaDesc media = wechatService.findUnSelfRadomMedia(custerName);
                 if (media == null) {
-                    result = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                    result = createTextXmlStr(custerName, serverName, "未交换到任何图片哦~");
                 } else {
                     result = createTextXmlStr(custerName, serverName
                             , "时间：" + media.getTime()
                                     + "\n" + "地点：" + media.getLocation()
-                                    + "\n" + "小故事："
                                     + "\n" + "    " + media.getStory()
-                                    + "\n\n" + "回复 “看图片” 显示图片"
-                                    + "\n" + "回复 “看故事” 重新看小故事");
+                                    + "\n\n" + "回复 “看图片” 显示图片");
                 }
             } else if (err == ErrorCode.ERROR_DESC_NEED_PIC) {
                 result = createTextXmlStr(custerName, serverName, "骚年，您需要先添加图片哦~");
             } else {
-                result = createTextXmlStr(custerName, serverName, "发生了未知错误");
+                result = createTextXmlStr(custerName, serverName, "发生了未知错误-10006");
             }
         } catch (Exception e) {
             logger.error("[wechat] add media description happens: ", e);
-            result = createTextXmlStr(custerName, serverName, "发生了未知错误");
+            result = createTextXmlStr(custerName, serverName, "发生了未知错误-10007，如果描述中有表情，请尝试去除~");
         }
         return result;
     }
@@ -302,6 +307,53 @@ public class WechatController {
         images.setMediaId(mediaId);
         outputMsg.setImage(images);
         return outputMsg;
+    }
+
+    @RequestMapping(value = "allMediaDesc")
+    @ResponseBody
+    public JSONObject allMediaDesc(
+            @RequestParam(required = false) int pageIndex,
+            HttpServletRequest request, HttpServletResponse response) {
+        JSONObject retJson = new JSONObject();
+        try{
+            WechatAllMediaDescResult result = wechatService.getAllFinishedMediaDescs(pageIndex);
+            System.out.print("all media desc request\n");
+            retJson.put("list", result.getDescManages());
+            retJson.put("pageIndex", result.getPageIndex());
+            retJson.put("pageNum", result.getPageNum());
+        } catch (Exception e) {
+            logger.error("[wechat] manage wechat happens: ", e);
+            retJson.put("list", "[]");
+            retJson.put("pageIndex", 1);
+            retJson.put("pageNum", 1);
+        }
+        return retJson;
+    }
+
+    @RequestMapping(value = "manage", method = { RequestMethod.GET, RequestMethod.POST })
+    public String manageMediaDesc(
+            @RequestParam(required = false) String token,
+            HttpServletRequest request, HttpServletResponse response) {
+        if (StringUtils.isEmpty(token) || !token.equals("xyzc")) {
+            return "fail";
+        }
+        return "geminiManager";
+    }
+
+    @RequestMapping(value = "delDescById")
+    @ResponseBody
+    public JSONObject delDescById(
+            @RequestParam(required = false) int id,
+            HttpServletRequest request, HttpServletResponse response) {
+        JSONObject retJson = new JSONObject();
+        try {
+            wechatService.deleteDescById(id);
+            retJson.put("status", "succ");
+        } catch (Exception e) {
+            logger.error("[wechat] delete desc by id happens: ", e);
+            retJson.put("status", "fail");
+        }
+        return retJson;
     }
 
     @RequestMapping(value = "test")
