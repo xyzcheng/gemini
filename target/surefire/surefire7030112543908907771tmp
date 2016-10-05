@@ -1,5 +1,5 @@
 #surefire
-#Sat Oct 01 11:11:02 CST 2016
+#Wed Oct 05 11:03:35 CST 2016
 enableAssertions=true
 testSuiteDefinitionTestSourceDirectory=E\:\\Projects\\IntelliJU\\gemini\\src\\test\\java
 classPathUrl.39=C\:\\Users\\xyzc\\.m2\\repository\\com\\fasterxml\\jackson\\core\\jackson-core\\2.8.0\\jackson-core-2.8.0.jar

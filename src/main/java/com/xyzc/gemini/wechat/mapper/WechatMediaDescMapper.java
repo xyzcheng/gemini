@@ -16,4 +16,5 @@ public interface WechatMediaDescMapper {
     List<WechatMediaDesc> findByOpenId(String openId);
     List<WechatMediaDesc> findSelfMediaDesc(String openId);
     List<WechatMediaDesc> findAll();
+    List<WechatMediaDesc> findMend();// 弥补未注意微信缓存导致的问题
 }

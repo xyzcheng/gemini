@@ -73,7 +73,7 @@ public class WechatService {
     }
 
     public WechatMediaDesc findUnSelfRadomMedia(String openId) {
-        List<WechatMediaDesc> mediaDescs = wechatMediaDescMapper.findAll();
+        List<WechatMediaDesc> mediaDescs = wechatMediaDescMapper.findMend(); //弥补微信缓存
         if (mediaDescs == null || mediaDescs.isEmpty()) {
             return null;
         }
@@ -81,7 +81,8 @@ public class WechatService {
         List<WechatMediaDesc> selfMediaDescs = new ArrayList<WechatMediaDesc>();
         Set<Integer> alreadyExId = new HashSet<Integer>();
         for (WechatMediaDesc mediaDesc : mediaDescs) {
-            if (StringUtils.isEmpty(mediaDesc.getTime()) || StringUtils.isEmpty(mediaDesc.getLocation())
+            if (mediaDesc.getId() < 185 || StringUtils.isEmpty(mediaDesc.getTime())
+                    || StringUtils.isEmpty(mediaDesc.getLocation())
                     || StringUtils.isEmpty(mediaDesc.getStory())) {
                 continue;
             }

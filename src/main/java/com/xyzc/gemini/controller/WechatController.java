@@ -154,7 +154,7 @@ public class WechatController {
                     outXml = createTextXmlStr(custerName, serverName, "不存在未完成图片");
                 } else {
                     for (WechatMediaDesc media : wechatMedias) {
-                        outXml += xs.toXML(createImageMsg(custerName, serverName, media.getMediaId()));
+                        outXml = xs.toXML(createImageMsg(custerName, serverName, media.getMediaId()));
                     }
                 }
             } else if (content.equals("删除未完成图片")) {
@@ -172,11 +172,11 @@ public class WechatController {
                 }
             } else if (content.equals("看图片")) {
                 WechatMediaDesc mediaDesc = wechatService.findUnSelfRadomMedia(custerName);
-                if (mediaDesc == null) {
+                //弥补微信后台缓存没注意清除的问题。
+                if (mediaDesc == null || mediaDesc.getId() <= 185) {
                     outXml = createTextXmlStr(custerName, serverName, "您上一次交换到的图片有可能已经被删除，请重新交换图片哦~");
                 } else {
                     outXml = xs.toXML(createImageMsg(custerName, serverName, mediaDesc.getMediaId()));
-                    System.out.println("xml转换：/n" +outXml);
                 }
             } else if (content.equals("看故事")) {
                 WechatMediaDesc mediaDesc = wechatService.findUnSelfRadomMedia(custerName);
@@ -197,7 +197,8 @@ public class WechatController {
             try {
                 int err = wechatService.addMedia(custerName, inputMsg.getMediaId(), inputMsg.getPicUrl(), "image");
                 if (err == ErrorCode.ERROR_SUCCESS) {
-                    outXml = createTextXmlStr(custerName, serverName, "现在您可以按照格式添加图片的描述信息了~");
+                    outXml = createTextXmlStr(custerName, serverName, "现在您可以按照格式添加图片的描述信息了~\n" +
+                            "如您不想为该图片添加描述信息，请回复“删除未完成图片”即可进入下一轮图片交换");
                 } else if (err == ErrorCode.ERROR_HAS_UNFINISHED_PIC) {
                     outXml = createTextXmlStr(custerName, serverName, GUIDE_PIC_NEED_DESCRIPTION);
                 } else {

@@ -57,5 +57,8 @@
     <select id="findAll" resultType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
         SELECT  * FROM gemini_wechat_media_desc;
     </select>
+    <select id="findMend" resultType="com.xyzc.gemini.wechat.model.local.WechatMediaDesc">
+        SELECT  * FROM gemini_wechat_media_desc WHERE id &gt;= 185;
+    </select>
 
 </mapper>

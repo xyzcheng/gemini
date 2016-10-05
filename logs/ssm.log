@@ -6032,3 +6032,32 @@ Caused by: java.net.ConnectException: Connection refused: connect
 [INFO][main][2016-10-01 11:11:08][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/manage.*] onto handler 'wechatController'
 [INFO][main][2016-10-01 11:11:08][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/manage/] onto handler 'wechatController'
 [INFO][main][2016-10-01 11:11:08][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 280 ms
+[INFO][main][2016-10-01 12:25:32][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization started
+[INFO][main][2016-10-01 12:25:32][org.springframework.context.support.AbstractApplicationContext] - Refreshing Root WebApplicationContext: startup date [Sat Oct 01 12:25:32 CST 2016]; root of context hierarchy
+[INFO][main][2016-10-01 12:25:32][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mybatis.xml]
+[INFO][main][2016-10-01 12:25:32][org.springframework.core.io.support.PropertiesLoaderSupport] - Loading properties file from class path resource [jdbc.properties]
+[INFO][main][2016-10-01 12:25:32][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.context.ContextLoader] - Root WebApplicationContext: initialization completed in 515 ms
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization started
+[INFO][main][2016-10-01 12:25:33][org.springframework.context.support.AbstractApplicationContext] - Refreshing WebApplicationContext for namespace 'SpringMVC-servlet': startup date [Sat Oct 01 12:25:33 CST 2016]; parent: Root WebApplicationContext
+[INFO][main][2016-10-01 12:25:33][org.springframework.beans.factory.xml.XmlBeanDefinitionReader] - Loading XML bean definitions from class path resource [spring-mvc.xml]
+[INFO][main][2016-10-01 12:25:33][org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor] - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser] onto handler 'loginController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser.*] onto handler 'loginController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/addUser/] onto handler 'loginController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/test] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/test.*] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/test/] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat.*] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/wechat/] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/delDescById] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/delDescById.*] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/delDescById/] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/manage] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/manage.*] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/manage/] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/allMediaDesc] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/allMediaDesc.*] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.handler.AbstractUrlHandlerMapping] - Mapped URL path [/allMediaDesc/] onto handler 'wechatController'
+[INFO][main][2016-10-01 12:25:33][org.springframework.web.servlet.FrameworkServlet] - FrameworkServlet 'SpringMVC': initialization completed in 360 ms
